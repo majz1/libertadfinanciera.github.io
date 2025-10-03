@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp de Llibertat Immobiliària</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estils Generals */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Secció HERO (Capçalera en la imatge) */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            /* RUTA LOCAL: Imatge 'genio.jfif' */
+            background-image: url('genio.jfif'); 
+            
+            background-size: 70%; 
+            background-position: center 30%; 
+            background-repeat: no-repeat; 
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        /* Capa fosca sobre la imatge per millorar la llegibilitat del text */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding-bottom: 50px; 
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900; 
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Botó CTA (Call to Action) */
+        .cta-button {
+            background-color: #FFC300; 
+            color: #1a1a1a;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: 900;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            border: none;
+        }
+        
+        .cta-button:hover {
+            background-color: #e6b100;
+            transform: translateY(-2px);
+        }
+
+        /* Seccions de Contingut */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .section.dark {
+            background-color: #f0f0f0;
+        }
+
+        .section h2 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Característiques / Beneficis */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-item {
+            flex: 1 1 calc(30% - 40px);
+            min-width: 250px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            border-top: 5px solid #FFC300;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item h3 {
+            color: #FFC300;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0;
+            color: #555;
+        }
+
+        /* Testimonis */
+        .testimonial-item {
+            margin-top: 30px;
+            font-style: italic;
+            color: #333;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            border-left: 5px solid #FFC300;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-item strong {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        /* Peu de Pàgina */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: #FFC300;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Media Queries (Disseny Responsive) */
+        @media (max-width: 992px) {
+            .hero {
+                background-size: 90%; 
+                background-position: center 35%;
+            }
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.5em;
+            }
+            .section h2 {
+                font-size: 2.5em;
+            }
+            .features {
+                gap: 20px;
+            }
+            .feature-item {
+                flex: 1 1 calc(45% - 20px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh; 
+                background-size: 100%; 
+                background-position: center 40%; 
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .cta-button {
+                font-size: 1.2em;
+                padding: 15px 30px;
+            }
+            .section {
+                padding: 50px 15px;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-item {
+                flex: 1 1 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>LO BOOTCAMP QUE TE FARÀ SER EL <br> GENI DE LA LLIBERTAT IMMOBILIÀRIA</h1>
+            <p>Descobrix lo sistema pas a pas per generar rendes passives i pillar la llibertat financera invertint en finques.</p>
+            <a href="#inscripcion" class="cta-button">VUI VIURE DE LES MEVES RENTES!</a>
+        </div>
+    </header>
+
+    <section class="section">
+        <h2>Per què este Bootcamp?</h2>
+        <p>
+            Mentres altres compren cases, tu aprendràs a fer **màquines de fer diners**. De la mà de l'expert (lo "Geni de la Llibertat"), dominaràs l'art de comprar **intel·ligentment**, financiar **creativament** i gestionar **eficientment**. Oblida't de la teoria avorrida; ací només voràs **estratègies provades** per obtindre la teva primera propietat rendible o escalar el teu portfoli actual.
+        </p>
+    </section>
+
+    <section class="section features dark">
+        <h2>Lo Poder d'Invertir sense Patir</h2>
+        <div class="features">
+            <div class="feature-item">
+                <h3>💰 Generació de Flux de Caixa</h3>
+                <p>T'ensenyarem a buscar finques que te paguen cada mes, assegurant una renda passiva constant des del dia u.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🛡️ Protecció de Patrimoni</h3>
+                <p>Aprendràs a estructurar los teus actius legalment i fiscalment per minimitzar riscs i maximitzar los teus beneficis.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🚀 Estratègies d'Apalançament</h3>
+                <p>Domina les tècniques per gastar los diners del banc i de socis per fer crèixer lo teu portfoli a una velocitat increïble.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🗺️ Anàlisi d'Oportunitats</h3>
+                <p>Desenvolupa "l'ull d'inversor" per pillar propietat subvalorades en un potencial de revalorització massiu.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔑 Procés de Tancament Ràpid</h3>
+                <p>Simplifica lo complex procés de compra-venda. Te donarem los guions i les ferramentes per negociar com un expert.</p>
+            </div>
+            <div class="feature-item">
+                <h3>💡 Mentalitat d'Inversor</h3>
+                <p>Supera la por i la paràlisi per anàlisi. Agarra l'enfocament de creixement que tenen los inversors immobiliaris milionaris.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Lo que diuen los nostros alumnes</h2>
+        <div class="testimonial-item">
+            <p>"Vaig trobar la claretat que no me donava cap curs. En 3 mesos vaig comprar lo meu segon pis i ara genere 1.200€ nets al mes. És la millor inversió que he fet."</p>
+            <strong>— Javier C. (Va aconseguir la Llibertat Parcial)</strong>
+        </div>
+        <div class="testimonial-item">
+            <p>"Lo sistema del 'Geni' és brutalment pràctic. Vaig passar de tindre los meus estalvis aturats a tindre lo meu primer lloguer vacacional generant un 20% de rendibilitat. Increïble."</p>
+            <strong>— Laura M. (Emprenedora Immobiliària)</strong>
+        </div>
+    </section>
+
+    <section class="section dark" id="inscripcion">
+        <h2>Lo teu Camí a la Llibertat Comença Hui!</h2>
+        <p>
+            Només un número limitat de places disponibles per a la pròxima edició. No esperis que lo mercat canvie, ¡domina-lo! Fes clic i assegura lo teu lloc abans que tanquem inscripcions.
+        </p>
+        <a href="#" class="cta-button">RESERVAR LA MEVA PLAÇA ARA</a>
+        <p style="font-size: 0.9em; color: #555; margin-top: 30px;">
+            *Consulta lo preu i les condicions del bootcamp al fer clic al botó.
+        </p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2023 Bootcamp de Llibertat Immobiliària. Tots los drets reservats.</p>
+        <p>
+            <a href="#">Avís Legal</a> |
+            <a href="#">Política de Privacitat</a> |
+            <a href="#">Contacte</a>
+        </p>
+    </footer>
+
+</body>
+</html>
